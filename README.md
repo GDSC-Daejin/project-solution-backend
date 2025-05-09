@@ -35,28 +35,47 @@ GDG on Campus Solution Challenge 2025 백엔드 서버 입니다.
     │   │   ├── 📂 domain
     │   │   │   ├── 📂 chatbot
     │   │   │   │   ├── 📂 adapter
+    │   │   │   │   │   ├── 📂 dto
+    │   │   │   │   │   ├── 📂 in/web/api
+    │   │   │   │   │   └── 📂 out/persistence
     │   │   │   │   ├── 📂 application
     │   │   │   │   │   ├── 📂 port
+    │   │   │   │   │   │   ├── 📂 in
+    │   │   │   │   │   │   └── 📂 out
     │   │   │   │   │   └── 📂 service
-    │   │   │   │   └── 📂 domain
+    │   │   │   │   ├── 📂 domain
+    │   │   │   │   ├── 📂 exception
+    │   │   │   │   └── 📂 mapper
     │   │   │   ├── 📂 diary
     │   │   │   │   ├── 📂 adapter
     │   │   │   │   │   ├── 📂 dto
     │   │   │   │   │   │   ├── 📄 DiarySentimentAnalysisResult.java
-    │   │   │   │   │   │   └── 📂 request
-    │   │   │   │   │   └── 📂 in/web/api
-    │   │   │   │   │       └── 📄 DiaryApi.java
+    │   │   │   │   │   │   ├── 📂 request
+    │   │   │   │   │   │   │   └── 📄 DiaryRequestSentimentAnalysis.java
+    │   │   │   │   │   │   └── 📂 response
+    │   │   │   │   │   ├── 📂 in/web/api
+    │   │   │   │   │   │   └── 📄 DiaryApi.java
+    │   │   │   │   │   └── 📂 out/persistence
     │   │   │   │   ├── 📂 application
     │   │   │   │   │   ├── 📂 command
     │   │   │   │   │   │   └── 📄 DiarySentimentAnalysisCommand.java
-    │   │   │   │   │   ├── 📂 port/in
-    │   │   │   │   │   │   ├── 📄 AiDiaryUseCase.java
-    │   │   │   │   │   │   └── 📄 UserDiaryUseCase.java
+    │   │   │   │   │   ├── 📂 port
+    │   │   │   │   │   │   ├── 📂 in
+    │   │   │   │   │   │   │   ├── 📄 AiDiaryUseCase.java
+    │   │   │   │   │   │   │   └── 📄 UserDiaryUseCase.java
+    │   │   │   │   │   │   └── 📂 out
+    │   │   │   │   │   │       └── 📄 GeminiRequestPort.java
     │   │   │   │   │   └── 📂 service
     │   │   │   │   │       ├── 📄 AiDiaryService.java
     │   │   │   │   │       └── 📄 UserDiaryService.java
-    │   │   │   │   └── 📂 domain/model
-    │   │   │   │       └── 📄 diary.java
+    │   │   │   │   ├── 📂 domain
+    │   │   │   │   │   ├── 📂 entity
+    │   │   │   │   │   └── 📂 model
+    │   │   │   │   │       └── 📄 diary.java
+    │   │   │   │   ├── 📂 exception
+    │   │   │   │   │   └── 📄 DiaryInvalidValueException.java
+    │   │   │   │   └── 📂 mapper
+    │   │   │   │       └── 📄 DiaryMapper.java
     │   │   │   └── 📂 user
     │   │   │       ├── 📂 adapter
     │   │   │       │   ├── 📂 dto
@@ -68,25 +87,45 @@ GDG on Campus Solution Challenge 2025 백엔드 서버 입니다.
     │   │   │       │       ├── 📄 UserPersistenceAdapter.java
     │   │   │       │       └── 📄 UserRepository.java
     │   │   │       ├── 📂 application
-    │   │   │       │   ├── 📂 service
-    │   │   │       │   │   └── 📄 UserService.java
-    │   │   │       │   └── 📂 port/in
-    │   │   │       │       └── 📄 UserUseCase.java
-    │   │   │       └── 📂 domain
-    │   │   │           ├── 📂 entity
-    │   │   │           │   └── 📄 UserEntity.java
-    │   │   │           └── 📂 model
-    │   │   │               └── 📄 User.java
+    │   │   │       │   ├── 📂 command
+    │   │   │       │   │   └── 📄 UserSignUpCommand.java
+    │   │   │       │   ├── 📂 port
+    │   │   │       │   │   ├── 📂 in
+    │   │   │       │   │   │   └── 📄 UserUseCase.java
+    │   │   │       │   │   └── 📂 out
+    │   │   │       │   │       ├── 📄 ExistsUserPort.java
+    │   │   │       │   │       └── 📄 SaveUserPort.java
+    │   │   │       │   └── 📂 service
+    │   │   │       │       └── 📄 UserService.java
+    │   │   │       ├── 📂 domain
+    │   │   │       │   ├── 📂 entity
+    │   │   │       │   │   └── 📄 UserEntity.java
+    │   │   │       │   └── 📂 model
+    │   │   │       │       └── 📄 User.java
+    │   │   │       ├── 📂 exception
+    │   │   │       │   └── 📄 UserInvalidValueException.java
+    │   │   │       └── 📂 mapper
+    │   │   │           └── 📄 UserMapper.java
     │   │   ├── 📂 global
-    │   │   │   ├── 📂 common/response
-    │   │   │   │   └── 📄 ResponseDto.java
+    │   │   │   ├── 📂 common
+    │   │   │   │   ├── 📂 filter
+    │   │   │   │   ├── 📂 request
+    │   │   │   │   └── 📂 response
+    │   │   │   │       └── 📄 ResponseDto.java
     │   │   │   ├── 📂 config
+    │   │   │   │   ├── 📄 MultipartJackson2HttpMessageConverter.java
     │   │   │   │   ├── 📄 RestTemplateConfig.java
-    │   │   │   │   └── 📄 SwaggerConfig.java
-    │   │   │   └── 📂 error/exception
-    │   │   │       ├── 📄 CustomException.java
-    │   │   │       ├── 📄 ErrorCode.java
-    │   │   │       └── 📄 GlobalExceptionHandler.java
+    │   │   │   │   ├── 📄 SwaggerConfig.java
+    │   │   │   │   └── 📄 WebConfig.java
+    │   │   │   ├── 📂 error/exception
+    │   │   │   │   ├── 📄 CustomException.java
+    │   │   │   │   ├── 📄 ErrorCode.java
+    │   │   │   │   └── 📄 GlobalExceptionHandler.java
+    │   │   │   ├── 📂 security
+    │   │   │   │   ├── 📂 config
+    │   │   │   │   ├── 📂 filter
+    │   │   │   │   └── 📂 util
+    │   │   │   └── 📂 util
     │   │   └── 📂 infra/gemini
     │   │       ├── 📄 GeminiClient.java
     │   │       ├── 📂 dto
@@ -94,9 +133,13 @@ GDG on Campus Solution Challenge 2025 백엔드 서버 입니다.
     │   │       │   └── 📄 GeminiResponse.java
     │   │       └── 📂 enums
     │   │           ├── 📄 AIPrompt.java
+    │   │           ├── 📄 GeminiMimeType.java
     │   │           └── 📄 GeminiModel.java
     │   └── 📂 resources
-    │       └── 📄 application.properties
-    └── 📂 test
-        └── 📂 java/com/project/solution
-            └── 📄 SolutionApplicationTests.java
+    │       ├── 📄 application.properties
+    │       ├── 📄 application.properties.sample
+    │       └── 📂 static
+    │           ├── 📂 data
+    │           └── 📂 images
+    └── 📂 test/java/com/project/solution
+        └── 📄 SolutionApplicationTests.java
