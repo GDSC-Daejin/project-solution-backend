@@ -18,7 +18,7 @@ GDG on Campus Solution Challenge 2025 백엔드 서버 입니다.
 
 | <img src="https://github.com/user-attachments/assets/6e521cc2-58d7-47d9-9740-3e1e654f17f2" width="150" height="150" alt="Junpyo"/> |
 |:---:|
-| **Junpyo** |
+| **June** |
 </div>
 
 ## Project Structure
